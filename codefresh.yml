@@ -14,7 +14,7 @@ steps:
     tag: latest
 
   env-step:
-      image: codefreshio/nodeall
+      image: codefreshio/nodeall:latest
       commands:
         - gulp -v
         - node -v
