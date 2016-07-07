@@ -1,0 +1,23 @@
+version: '1.0'
+
+steps:
+  build-prj:
+    type: build
+    description: bower,node-inspector,grunt
+    image-name: codefreshio/nodeall
+    dockerfile: Dockerfile
+    tag: latest
+
+  push-dockerhub:
+    type: push
+    candidate: ${{build-prj}}
+    tag: latest
+
+  env-step:
+      image: codefreshio/nodeall
+      commands:
+        - gulp -v
+        - node -v
+        - npm -v
+        - node-inspector -v
+        - bower -v
